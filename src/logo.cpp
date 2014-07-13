@@ -8,7 +8,7 @@ using namespace utility;
 namespace effects
 {
     // Static initialisation
-    const std::string Logo::FONT_PATH = resourcePath("font/logo.ttf");
+    const std::string Logo::FONT_PATH = resourcePath("font/november.ttf");
 
     Logo::Logo(sf::RenderWindow &window, const std::string &msg)
         : Effect(window) 
@@ -21,7 +21,7 @@ namespace effects
         auto window_size = window.getSize();
 
         text_.setFont(font_);
-        text_.setCharacterSize(window_size.x / 15);
+        text_.setCharacterSize(window_size.x / 20.0f);
         text_.setString(msg);
 
         auto logo_size = text_.getLocalBounds();

@@ -47,11 +47,14 @@ namespace effects
             /** The text font. */
             sf::Font font_;
 
-            /** The X velocity. */
-            double delta_;
+            /** Sin wave input arguments. */
+            double arg1_, arg2_, arg3_;
 
-            /** The number of horizontal pixels seperating each character. */
-            unsigned int characterSpacing_;
+            /** the x restart point. */
+            double restart_point_;
+
+            /** The rotation angle. */
+            double delta_angle_;
 
             /** The characters containing the message. */
             std::vector<std::shared_ptr<sf::Text>> characters_;

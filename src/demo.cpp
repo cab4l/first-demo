@@ -17,8 +17,8 @@ using namespace utility;
 // Static initialisation
 const bool Demo::VSYNC_ENABLED = true;
 const std::string Demo::MUSIC_PATH = resourcePath("music/chiptune.xm");
-const std::string Demo::WAVE_TEXT = "HELLO WORLD";
-const std::string Demo::LOGO_TEXT = "INTRO";
+const std::string Demo::WAVE_TEXT = "Welcome to the intro. This is some sample text from FIRST_INTRO";
+const std::string Demo::LOGO_TEXT = "save the $(date)";
 
 Demo::Demo(const std::string &title, const sf::VideoMode &video_mode)
     :title_(title), video_mode_(video_mode)
@@ -74,14 +74,14 @@ void Demo::init()
 
     // Load effects
     effects_.push_back(std::unique_ptr<Effect>(new Starfield(window_)));
-    effects_.push_back(std::unique_ptr<Effect>(new Deco(window_)));
     effects_.push_back(std::unique_ptr<Effect>(new Logo(window_, LOGO_TEXT)));
     effects_.push_back(std::unique_ptr<Effect>(new SineScroller(window_, WAVE_TEXT))); 
+    effects_.push_back(std::unique_ptr<Effect>(new Deco(window_)));
 }
 
 void Demo::update(sf::Time elapsed)
 {
-    for (auto& effect : effects_)
+    for (const auto& effect : effects_)
     {
         effect->update(elapsed);
     } 
@@ -90,7 +90,7 @@ void Demo::update(sf::Time elapsed)
 void Demo::draw()
 {
     window_.clear();
-    for (auto& effect : effects_)
+    for (const auto& effect : effects_)
     {
         effect->draw();
     }

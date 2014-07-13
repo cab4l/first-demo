@@ -10,7 +10,7 @@ namespace effects
         // Create the star images
         stars_image_.create(window_size_.x, window_size_.y, sf::Color::Black);
         small_star_image_.create(1, 1, sf::Color::White);
-        medium_star_image_.create(2, 2, sf::Color::Green);
+        medium_star_image_.create(2, 2, sf::Color(100, 20, 100));
         large_star_image_.create(4, 4, sf::Color::Red);
 
         // Populate the star texture and make it pretty
