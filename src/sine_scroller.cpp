@@ -71,7 +71,7 @@ namespace effects
 
     void SineScroller::draw()
     {
-        for (auto &character : characters_)
+        for (const auto &character : characters_)
         {
             window_.draw(*character);
         }
