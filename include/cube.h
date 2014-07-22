@@ -1,6 +1,8 @@
 #ifndef EFFECTS_CUBE_H
 #define EFFECTS_CUBE_H
 
+#include <vector>
+
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp> 
 #include "effect.h"
@@ -40,6 +42,9 @@ namespace effects
         private:
             /** Rotation angle. */
             float angle_;
+
+            /** The cube face textures. */
+            std::vector<std::unique_ptr<sf::Texture>> cube_textures_;
     };
 }
 

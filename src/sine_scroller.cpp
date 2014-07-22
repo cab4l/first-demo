@@ -71,9 +71,11 @@ namespace effects
 
     void SineScroller::draw()
     {
+        window_.pushGLStates();
         for (const auto &character : characters_)
         {
             window_.draw(*character);
         }
+        window_.popGLStates();
     }
 }

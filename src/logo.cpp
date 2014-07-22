@@ -37,6 +37,8 @@ namespace effects
 
     void Logo::draw()
     {
+        window_.pushGLStates();
         window_.draw(text_);
+        window_.popGLStates();
     }
 }

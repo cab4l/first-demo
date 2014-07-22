@@ -68,21 +68,20 @@ namespace effects
 
     void Starfield::update_stars_texture()
     {
-        for(std::vector<Star>::iterator it = small_stars_.begin(); it != small_stars_.end(); ++it)
+        for(auto &star : small_stars_)
         {
-            stars_texture_.update(small_star_image_, it->getXPos(), it->getYPos());
+            stars_texture_.update(small_star_image_, star.getXPos(), star.getYPos());
         }
 
-        for(std::vector<Star>::iterator it = medium_stars_.begin(); it != medium_stars_.end(); ++it)
+        for(auto &star : medium_stars_)
         {
-            stars_texture_.update(medium_star_image_, it->getXPos(), it->getYPos());
+            stars_texture_.update(medium_star_image_, star.getXPos(), star.getYPos());
         }
 
-        for(std::vector<Star>::iterator it = large_stars_.begin(); it != large_stars_.end(); ++it)
+        for(auto &star : large_stars_)
         {
-            stars_texture_.update(large_star_image_, it->getXPos(), it->getYPos());
+            stars_texture_.update(large_star_image_, star.getXPos(), star.getYPos());
         }
-
     }
 
     void Starfield::move_stars()
@@ -141,6 +140,8 @@ namespace effects
 
     void Starfield::draw()
     {
+        window_.pushGLStates();
         window_.draw(stars_sprite_);
+        window_.popGLStates();
     }
 }

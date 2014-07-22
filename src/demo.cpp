@@ -18,7 +18,8 @@ using namespace utility;
 // Static initialisation
 const bool Demo::VSYNC_ENABLED = true;
 const std::string Demo::MUSIC_PATH = resourcePath("music/chiptune.xm");
-const std::string Demo::WAVE_TEXT = "START fhiwo heiof hewfoih fewoih fioewhfioewh fioew hfioew hfwiohf ewio hfioew fhwoei END";
+const std::string Demo::WAVE_TEXT = "Please save the date of July 24th 2015 for the wedding of Michael Scott and Laura Hollier "
+                                    "in Newport Pagnell. Formal invitation to follow.";
 const std::string Demo::LOGO_TEXT = "save the $(date)";
 
 Demo::Demo(const std::string &title, const sf::VideoMode &video_mode)
@@ -64,7 +65,7 @@ void Demo::run()
 void Demo::init()
 {
     // Create the window
-    window_.create(video_mode_, title_, sf::Style::Fullscreen);
+    window_.create(video_mode_, title_, sf::Style::Default, sf::ContextSettings(32));
     window_.setVerticalSyncEnabled(VSYNC_ENABLED);
 
     // Music
@@ -75,10 +76,10 @@ void Demo::init()
 
     // Load effects
     effects_.push_back(std::unique_ptr<Effect>(new Starfield(window_)));
+    effects_.push_back(std::unique_ptr<Effect>(new Cube(window_)));
     effects_.push_back(std::unique_ptr<Effect>(new Logo(window_, LOGO_TEXT)));
     effects_.push_back(std::unique_ptr<Effect>(new SineScroller(window_, WAVE_TEXT))); 
     effects_.push_back(std::unique_ptr<Effect>(new Deco(window_)));
-    effects_.push_back(std::unique_ptr<Effect>(new Cube(window_)));
 }
 
 void Demo::update(sf::Time elapsed)

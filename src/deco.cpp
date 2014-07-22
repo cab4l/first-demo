@@ -30,9 +30,11 @@ namespace effects
 
     void Deco::draw()
     {
+        window_.pushGLStates();
         for (const auto &border : borders_)
         {
             window_.draw(border);
         }
+        window_.popGLStates();
     }
 }
