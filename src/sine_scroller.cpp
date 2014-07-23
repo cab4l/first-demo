@@ -10,7 +10,7 @@ using namespace utility;
 namespace effects
 {
     // Static initialisation
-    const std::string SineScroller::FONT_PATH = resourcePath("font/november.ttf");
+    const std::string SineScroller::FONT_PATH = resourcePath("november.ttf");
 
     SineScroller::SineScroller(sf::RenderWindow &window, const std::string &msg)
         : Effect(window)

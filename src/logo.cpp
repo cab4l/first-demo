@@ -8,7 +8,7 @@ using namespace utility;
 namespace effects
 {
     // Static initialisation
-    const std::string Logo::FONT_PATH = resourcePath("font/november.ttf");
+    const std::string Logo::FONT_PATH = resourcePath("november.ttf");
 
     Logo::Logo(sf::RenderWindow &window, const std::string &msg)
         : Effect(window) 

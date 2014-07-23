@@ -17,7 +17,7 @@ using namespace utility;
 
 // Static initialisation
 const bool Demo::VSYNC_ENABLED = true;
-const std::string Demo::MUSIC_PATH = resourcePath("music/chiptune.xm");
+const std::string Demo::MUSIC_PATH = resourcePath("chiptune.xm");
 const std::string Demo::WAVE_TEXT = "Please save the date of July 24th 2015 for the wedding of Michael Scott and Laura Hollier "
                                     "in Newport Pagnell. Formal invitation to follow.";
 const std::string Demo::LOGO_TEXT = "save the $(date)";

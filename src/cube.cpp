@@ -20,7 +20,7 @@ namespace effects
         for(int i = 1; i <= 6; i++)
         {
             std::unique_ptr<sf::Texture> tex(new sf::Texture);
-            std::string texture_path = resourcePath("textures/" + std::to_string(i) + ".png");
+            std::string texture_path = resourcePath(std::to_string(i) + ".png");
             if (!tex->loadFromFile(texture_path))
             {
                 throw std::runtime_error("Failed to load: " + texture_path); 
