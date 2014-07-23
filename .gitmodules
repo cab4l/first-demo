@@ -1,6 +1,0 @@
-[submodule "extlibs/SFML"]
-	path = extlibs/SFML
-	url = git://github.com/LaurentGomila/SFML
-[submodule "extlibs/dumb"]
-	path = extlibs/dumb
-	url = git://github.com/kode54/dumb
