@@ -12,7 +12,7 @@ set(PROJ_RESOURCE_DIR ${PROJECT_SOURCE_DIR}/resources)
 set(EXECUTABLE_NAME "first-demo")
 
 # CMake settings
-set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJ_OUTPUT_DIR})
 
 # Header files
