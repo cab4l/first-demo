@@ -8,9 +8,7 @@
 
 ModMusic::ModMusic()
     : module_(NULL), player_(NULL)
-{
-    dumb_register_stdfiles();
-}
+{}
 
 ModMusic::~ModMusic()
 {
@@ -18,18 +16,10 @@ ModMusic::~ModMusic()
     dumb_exit();
 }
 
-bool ModMusic::openFromFile(const std::string &filename)
+bool ModMusic::openFromMemory(const char *data, long size)
 {
-    // Close any open file
     close();
-
-    const char *ext = strchr(filename.c_str(), '.');
-    if (strcmp(ext, ".mod") == 0)
-        module_ = dumb_load_mod_quick(filename.c_str());
-    else if (strcmp(ext, ".xm") == 0)
-        module_ = dumb_load_xm_quick(filename.c_str());
-    else if (strcmp(ext, ".s3m") == 0)
-        module_ = dumb_load_s3m_quick(filename.c_str());
+    module_ = dumb_read_xm_quick(dumbfile_open_memory(data, size));
 
     if (module_ != NULL)
     {

@@ -3,19 +3,19 @@
 #include "logo.h"
 #include "utility.h"
 
+#include "resources.h"
+
 using namespace utility;
+using namespace resources;
 
 namespace effects
 {
-    // Static initialisation
-    const std::string Logo::FONT_PATH = resourcePath("november.ttf");
-
     Logo::Logo(sf::RenderWindow &window, const std::string &msg)
         : Effect(window) 
     {
-        if (!font_.loadFromFile(FONT_PATH))
+        if (!font_.loadFromMemory(&font[0], font.size()))
         {
-            throw std::runtime_error("Failed to load: " + FONT_PATH);
+            throw std::runtime_error("Failed to load font");
         }
 
         auto window_size = window.getSize();

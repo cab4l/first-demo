@@ -44,7 +44,7 @@ namespace effects
             float angle_;
 
             /** The cube face textures. */
-            std::vector<std::unique_ptr<sf::Texture>> cube_textures_;
+            sf::Texture cube_texture_;
     };
 }
 

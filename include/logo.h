@@ -40,9 +40,6 @@ namespace effects
              */
             void draw() override;
         private:
-            /** The path to the logo font. */
-            static const std::string FONT_PATH;
-
             /** The font to be used. */
             sf::Font font_;
 

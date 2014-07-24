@@ -11,13 +11,14 @@
 #include "sine_scroller.h"
 #include "cube.h"
 #include "utility.h"
+#include "resources.h"
 
 using namespace effects;
 using namespace utility;
+using resources::chiptune_xm;
 
 // Static initialisation
 const bool Demo::VSYNC_ENABLED = true;
-const std::string Demo::MUSIC_PATH = resourcePath("chiptune.xm");
 const std::string Demo::WAVE_TEXT = "Please save the date of July 24th 2015 for the wedding of Michael Scott and Laura Hollier "
                                     "in Newport Pagnell. Formal invitation to follow.";
 const std::string Demo::LOGO_TEXT = "save the $(date)";
@@ -65,13 +66,13 @@ void Demo::run()
 void Demo::init()
 {
     // Create the window
-    window_.create(video_mode_, title_, sf::Style::Default, sf::ContextSettings(32));
+    window_.create(video_mode_, title_, sf::Style::Fullscreen, sf::ContextSettings(32));
     window_.setVerticalSyncEnabled(VSYNC_ENABLED);
 
     // Music
-    if (!music_.openFromFile(MUSIC_PATH))
+    if (!music_.openFromMemory(reinterpret_cast<const char*>(&chiptune_xm[0]), chiptune_xm.size()))
     {
-        throw std::runtime_error("Failed to load: " + MUSIC_PATH);
+        throw std::runtime_error("Failed to load music");
     }
 
     // Load effects

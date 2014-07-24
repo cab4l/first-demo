@@ -24,12 +24,12 @@ class ModMusic : public sf::SoundStream
         ~ModMusic();
 
         /**
-         * Read music from an audio file.
+         * Read music from memory. Note only xm files are supported
          *
-         * @param filename the file to load
-         * @return true if the music was succesfully loaded, false otherwise
+         * @param data a pointer to the start of the audio
+         * @param size the size of the audio segment.
          */
-        bool openFromFile(const std::string &filename);
+        bool openFromMemory(const char *data, long size);
 
         /**
          * Get the total duration of the music.

@@ -28,6 +28,7 @@ set(HEADER_FILES
     ${PROJ_INC_DIR}/starfield.h
     ${PROJ_INC_DIR}/star.h
     ${PROJ_INC_DIR}/utility.h
+    ${PROJ_INC_DIR}/resources.h
 )
 
 # Source files
@@ -42,18 +43,9 @@ set(PROJ_SOURCES
     ${PROJ_SRC_DIR}/star.cpp
     ${PROJ_SRC_DIR}/starfield.cpp
     ${PROJ_SRC_DIR}/utility.cpp
-)
-
-# Resource files
-set(PROJ_RESOURCES
-    ${PROJ_RESOURCE_DIR}/chiptune.xm
-    ${PROJ_RESOURCE_DIR}/november.ttf
-    ${PROJ_RESOURCE_DIR}/1.png
-    ${PROJ_RESOURCE_DIR}/2.png
-    ${PROJ_RESOURCE_DIR}/3.png
-    ${PROJ_RESOURCE_DIR}/4.png
-    ${PROJ_RESOURCE_DIR}/5.png
-    ${PROJ_RESOURCE_DIR}/6.png
+    ${PROJ_SRC_DIR}/cube_texture.cpp
+    ${PROJ_SRC_DIR}/chiptune.cpp
+    ${PROJ_SRC_DIR}/font.cpp
 )
 
 # Compile options
@@ -84,9 +76,6 @@ add_executable(${EXECUTABLE_NAME} ${PROJ_SOURCES})
 # Link libraries
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 target_link_libraries(${EXECUTABLE_NAME} ${DUMB_LIBRARIES})
-
-# Copy resources
-file(COPY ${PROJ_RESOURCES} DESTINATION ${PROJ_OUTPUT_DIR})
 
 # Install the target
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION ${PROJ_OUTPUT_DIR})

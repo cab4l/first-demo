@@ -41,9 +41,6 @@ namespace effects
              */
             void draw() override;
         private:
-            /** The font path. */
-            static const std::string FONT_PATH;
-
             /** The text font. */
             sf::Font font_;
 

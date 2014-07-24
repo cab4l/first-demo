@@ -1,31 +1,25 @@
 #include <stdexcept>
-#include <memory>
 #include <math.h>
 
 #include <SFML/OpenGL.hpp>
 
 #include "cube.h"
 #include "utility.h"
+#include "resources.h"
 
-using namespace utility;
+using namespace resources;
 
 namespace effects
 {
     Cube::Cube(sf::RenderWindow &window)
-        : Effect(window)
+        : Effect(window), angle_(0.0f)
     {
         auto window_size = window_.getSize();
 
         // Load resources
-        for(int i = 1; i <= 6; i++)
+        if (!cube_texture_.loadFromMemory(&resources::cube_tex[0], resources::cube_tex.size()))
         {
-            std::unique_ptr<sf::Texture> tex(new sf::Texture);
-            std::string texture_path = resourcePath(std::to_string(i) + ".png");
-            if (!tex->loadFromFile(texture_path))
-            {
-                throw std::runtime_error("Failed to load: " + texture_path); 
-            }
-            cube_textures_.push_back(std::move(tex));            
+            throw std::runtime_error("Failed to load texture");
         }
 
         // GL Init
@@ -45,7 +39,7 @@ namespace effects
 
     void Cube::update(sf::Time elapsed)
     {
-        angle_ += elapsed.asSeconds() * 0.2f;        
+        angle_ += elapsed.asSeconds() * 0.5f; 
     }
 
     void Cube::draw()
@@ -59,50 +53,33 @@ namespace effects
         glRotatef(angle_ * 30, 0.f, 1.f, 0.f);
         glRotatef(angle_ * 90, 0.f, 0.f, 1.f);
 
-        int textId = 0;
-
-        sf::Texture::bind(cube_textures_[textId++].get());
+        sf::Texture::bind(&cube_texture_);
         glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f( 50.f, 50.f, -50.f);
             glTexCoord2f(1, 0); glVertex3f( 50.f, -50.f, -50.f);
-        glEnd();
 
-        sf::Texture::bind(cube_textures_[textId++].get());
-        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(1, 1); glVertex3f( 50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f( 50.f, -50.f, 50.f);
-        glEnd();
 
-        sf::Texture::bind(cube_textures_[textId++].get());
-        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f(-50.f, -50.f, 50.f);
-        glEnd();
- 
-        sf::Texture::bind(cube_textures_[textId++].get());
-        glBegin(GL_QUADS);
+
             glTexCoord2f(0, 0); glVertex3f(50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f(50.f, -50.f, 50.f);
-        glEnd();
- 
-        sf::Texture::bind(cube_textures_[textId++].get());
-        glBegin(GL_QUADS);
+
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, -50.f, -50.f);
             glTexCoord2f(1, 0); glVertex3f(50.f, -50.f, 50.f);
-        glEnd();
- 
-        sf::Texture::bind(cube_textures_[textId].get());
-        glBegin(GL_QUADS);
+
             glTexCoord2f(0, 0); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, 50.f, -50.f);
