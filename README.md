@@ -12,6 +12,7 @@ first-intro is my first attempt at a demoscene production. It uses C++ 11 with
 
 #### Credits
 Code: cab4l
+
 Music: LOONIE - Lazersmoke (See his work [here](https://www.scenemusic.net/demovibes/artist/687/))
 
 #### Effects
