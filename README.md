@@ -25,6 +25,6 @@ Music: LOONIE - Lazersmoke (See his work [here](https://www.scenemusic.net/demov
 #### Dependencies
 first-intro uses SFML, OpenGL and DUMB. The build is configured to search for the development header and shared library files. To run the demo, the shared library (.dll/.so) files must be accessible.
 
-### Thanks
+#### Thanks
 Thanks to Simon for helping me with C++, SFML and DUMB for their great libraries and to all those old school demo hackers who inspired me to write a demo.
 
