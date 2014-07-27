@@ -58,6 +58,12 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "-std=c++11")
 endif()
 
+# Detect OpenGL
+find_package(OpenGL REQUIRED)
+if(OPENGL_FOUND)
+    include_directories(${OPENGL_INCLUDE_DIRS})
+endif()
+
 # Detect SFML 2
 find_package(SFML 2 REQUIRED system window graphics audio)
 if(SFML_FOUND)
@@ -74,6 +80,7 @@ endif()
 add_executable(${EXECUTABLE_NAME} ${PROJ_SOURCES})
 
 # Link libraries
+target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_LIBRARIES})
 target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 target_link_libraries(${EXECUTABLE_NAME} ${DUMB_LIBRARIES})
 
