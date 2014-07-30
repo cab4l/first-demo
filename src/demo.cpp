@@ -19,9 +19,12 @@ using resources::chiptune_xm;
 
 // Static initialisation
 const bool Demo::VSYNC_ENABLED = true;
-const std::string Demo::WAVE_TEXT = "Please save the date of July 24th 2015 for the wedding of Michael Scott and Laura Hollier "
-                                    "in Newport Pagnell. Formal invitation to follow.";
-const std::string Demo::LOGO_TEXT = "save the $(date)";
+const std::string Demo::WAVE_TEXT = "Greetings! .... welcome to first-demo , "
+        "my first attempt at a demo. turns out writing demos is super hard! "
+        "hopefully there will be more to come. shout outs to LOONIE for the "
+        "chips, and all those old school demo writers who inspired me to give "
+        "it a go. cab4l 30/07/2014 PEEEEACE...  ";
+const std::string Demo::LOGO_TEXT = "first-demo";
 
 Demo::Demo(const std::string &title, const sf::VideoMode &video_mode)
     :title_(title), video_mode_(video_mode)

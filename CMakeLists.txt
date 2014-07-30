@@ -54,7 +54,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     add_definitions(-Wall)
     set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    add_definitions(-Wall)
+    add_definitions(-Wall -Os)
     set(CMAKE_CXX_FLAGS "-std=c++11")
 endif()
 
