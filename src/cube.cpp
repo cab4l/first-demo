@@ -7,19 +7,25 @@
 #include "utility.h"
 #include "resources.h"
 
-using namespace resources;
-
 namespace effects
 {
+    // Static initialisation
+    const int Cube::CUBE_FACES = 6;
+
     Cube::Cube(sf::RenderWindow &window)
         : Effect(window), angle_(0.0f)
     {
         auto window_size = window_.getSize();
 
         // Load resources
-        if (!cube_texture_.loadFromMemory(&resources::cube_tex[0], resources::cube_tex.size()))
+        for (const auto &texture : resources::cube_tex)
         {
-            throw std::runtime_error("Failed to load texture");
+            sf::Texture cube_texture;
+            if (!cube_texture.loadFromMemory(&texture[0], texture.size()))
+            {
+                throw std::runtime_error("Failed to load texture");
+            }
+            cube_textures_.push_back(cube_texture);
         }
 
         // GL Init
@@ -53,33 +59,50 @@ namespace effects
         glRotatef(angle_ * 30, 0.f, 1.f, 0.f);
         glRotatef(angle_ * 90, 0.f, 0.f, 1.f);
 
-        sf::Texture::bind(&cube_texture_);
+        auto current_texture = cube_textures_.begin();
+
+        sf::Texture::bind(&(*current_texture++));
         glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f( 50.f, 50.f, -50.f);
             glTexCoord2f(1, 0); glVertex3f( 50.f, -50.f, -50.f);
+        glEnd();
 
+        sf::Texture::bind(&(*current_texture++));
+        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(1, 1); glVertex3f( 50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f( 50.f, -50.f, 50.f);
+        glEnd();
 
+        sf::Texture::bind(&(*current_texture++));
+        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f(-50.f, -50.f, 50.f);
+        glEnd();
 
+        sf::Texture::bind(&(*current_texture++));
+        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(50.f, -50.f, -50.f);
             glTexCoord2f(0, 1); glVertex3f(50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, 50.f, 50.f);
             glTexCoord2f(1, 0); glVertex3f(50.f, -50.f, 50.f);
+        glEnd();
 
+        sf::Texture::bind(&(*current_texture++));
+        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, -50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, -50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, -50.f, -50.f);
             glTexCoord2f(1, 0); glVertex3f(50.f, -50.f, 50.f);
+        glEnd();
 
+        sf::Texture::bind(&(*current_texture++));
+        glBegin(GL_QUADS);
             glTexCoord2f(0, 0); glVertex3f(-50.f, 50.f, 50.f);
             glTexCoord2f(0, 1); glVertex3f(-50.f, 50.f, -50.f);
             glTexCoord2f(1, 1); glVertex3f(50.f, 50.f, -50.f);

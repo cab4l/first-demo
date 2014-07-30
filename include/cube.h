@@ -40,11 +40,14 @@ namespace effects
              */
             void draw() override;
         private:
+            /** The number of faces on a cube. */
+            static const int CUBE_FACES;
+
             /** Rotation angle. */
             float angle_;
 
             /** The cube face textures. */
-            sf::Texture cube_texture_;
+            std::vector<sf::Texture> cube_textures_;
     };
 }
 

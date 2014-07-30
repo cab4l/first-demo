@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/resources.h
+vector
+-
+cstdint
+-
+
+/home/mrnoda/Dev/first-demo/src/cube_texture.cpp
+resources.h
+/home/mrnoda/Dev/first-demo/src/resources.h
+
