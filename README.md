@@ -11,7 +11,7 @@ first-intro is my first attempt at a demoscene production. It uses C++ 11 with
 [SFML](https://github.com/LaurentGomila/SFML) for graphics, and uses [DUMB](https://github.com/kode54/dumb) to provide tracker music playback using SFML::Audio.
 
 #### Credits
-Code: cab4l
+Code: mrnoda
 
 Music: LOONIE - Lazersmoke (See his work [here](https://www.scenemusic.net/demovibes/artist/687/))
 
