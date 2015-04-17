@@ -7,6 +7,8 @@ _/ ____\__|______  _______/  |_            __| _/____   _____   ____
                       \/                      \/    \/      \/        
 ```
 
+[![Build Status](https://travis-ci.org/mrnoda/first-demo.svg?branch=master)](https://travis-ci.org/mrnoda/first-demo)
+
 first-intro is my first attempt at a demoscene production. It uses C++ 11 with
 [SFML](https://github.com/LaurentGomila/SFML) for graphics, and uses [DUMB](https://github.com/kode54/dumb) to provide tracker music playback using SFML::Audio.
 
