@@ -7,11 +7,16 @@ compiler:
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y python-software-properties
+
+  # SFML
   - sudo apt-add-repository -y ppa:sonkun/sfml-stable
+
+  # GCC 4.8
+  - sudo apt-add-repository -y ppa:ubuntu-toolchain-r/test
 
 install:
   - sudo apt-get update
-  - sudo apt-get install -y libsfml-dev libdumb1-dev
+  - sudo apt-get install -y libsfml-dev libdumb1-dev gcc-4.8 g++-4.8
 
 before_script:
   - mkdir build
