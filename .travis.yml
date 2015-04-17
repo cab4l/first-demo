@@ -17,6 +17,7 @@ before_install:
 install:
   - sudo apt-get update
   - sudo apt-get install -y libsfml-dev libdumb1-dev gcc-4.8 g++-4.8
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 50
 
 before_script:
   - mkdir build
