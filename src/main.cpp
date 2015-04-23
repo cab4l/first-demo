@@ -57,7 +57,6 @@ int main(int argc, char *argv[])
 void begin()
 {
     std::cout << "Welcome to the demo!" << std::endl;
-
     Demo demo(DEMO_NAME, sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT));
     demo.run();
 }
